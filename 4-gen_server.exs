@@ -149,17 +149,16 @@ Grid
 |> Supervisor.which_children
 |> Enum.each(fn {_name, pid, _type, _args} -> :sys.trace(pid, true) end)
 
-{:ok, mike} = Driver.start(:mike)
-{:ok, sally} = Driver.start(:sally)
+{:ok, mike} = Driver.start(:mike) |> IO.inspect
+{:ok, bob} = Driver.start(:alissa) |> IO.inspect
+{:ok, sally} = Driver.start(:sally) |> IO.inspect
 
-Grid.join(mike, {10, 10}) |> IO.inspect
-Grid.join(sally, {11.5, 10}) |> IO.inspect
-
-Grid.nearby({10, 10}, 1.5) |> IO.inspect
-
-Grid.move(mike, {10.4, 10})
-Grid.leave(sally, {11.5, 10})
+Grid.join(mike, {10, 10})
+Grid.join(bob, {10.2, 10})
+Grid.join(sally, {11.5, 10})
 
 :timer.sleep(5000)
 
 Process.exit(mike, true)
+
+Grid.nearby({10, 10}, 1) |> IO.inspect
