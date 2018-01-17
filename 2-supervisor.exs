@@ -72,8 +72,8 @@ Grid
 
 :sys.trace(Grid, true)
 
-Grid.join(:josh, {10, 10}) |> IO.inspect
-Grid.join(:hugo, {9, 10}) |> IO.inspect
+Grid.join(:mike, {10, 10}) |> IO.inspect
+Grid.join(:sally, {9, 10}) |> IO.inspect
 
-Grid.move(:josh, {10.4, 4})
-Grid.leave(:josh, {10, 4})
+Grid.move(:mike, {10.4, 4})
+Grid.leave(:mike, {10, 4})

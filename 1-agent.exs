@@ -22,9 +22,9 @@ Grid.start_link |> IO.inspect
 
 :sys.trace(Grid, true)
 
-Grid.join(:josh, {10, 20}) |> IO.inspect
-Grid.join(:hugo, {11, 20}) |> IO.inspect
+Grid.join(:mike, {10, 20}) |> IO.inspect
+Grid.join(:sally, {11, 20}) |> IO.inspect
 
-Grid.move(:josh, {10, 21})
+Grid.move(:mike, {10, 21})
 
-Grid.leave(:josh)
+Grid.leave(:mike)

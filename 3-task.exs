@@ -101,12 +101,12 @@ Grid
 |> Supervisor.which_children
 |> Enum.each(fn {_name, pid, _type, _args} -> :sys.trace(pid, true) end)
 
-:sys.trace(Grid, true)
-
-Grid.join(:josh, {10, 10}) |> IO.inspect
-Grid.join(:hugo, {11.5, 10}) |> IO.inspect
+Grid.join(:mike, {10, 10}) |> IO.inspect
+Grid.join(:sally, {11.5, 10}) |> IO.inspect
 
 Grid.nearby({10, 10}, 1.5) |> IO.inspect
 
-Grid.move(:josh, {10.4, 4})
-Grid.leave(:josh, {10, 4})
+Grid.move(:mike, {10.4, 4})
+Grid.leave(:mike, {10, 4})
+
+Grid.nearby({10, 10}, 1.5) |> IO.inspect
