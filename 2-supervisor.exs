@@ -67,6 +67,9 @@ end
 IO.puts "grid: starting"
 Grid.start_link |> IO.inspect
 
+:sys.trace(:"tile-10-10", true)
+:sys.trace(:"tile-9-10", true)
+
 IO.puts "mike: joins grid"
 Grid.join(:mike, {10, 10}) |> IO.inspect
 
@@ -74,7 +77,7 @@ IO.puts "sally: joins grid"
 Grid.join(:sally, {9, 10}) |> IO.inspect
 
 IO.puts "mike: is on the move"
-Grid.move(:mike, {10.4, 4}) |> IO.inspect
+Grid.move(:mike, {10.4, 10}) |> IO.inspect
 
 IO.puts "mike: is leaving"
-Grid.leave(:mike, {10, 4}) |> IO.inspect
+Grid.leave(:mike, {10, 10}) |> IO.inspect

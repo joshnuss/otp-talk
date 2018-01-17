@@ -146,6 +146,9 @@ end
 IO.puts "grid: starting"
 Grid.start_link |> IO.inspect
 
+:sys.trace(:"tile-10-10", true)
+:sys.trace(:"tile-11-10", true)
+
 IO.puts "driver: starting mike"
 {:ok, mike} = Driver.start(:mike)
 
@@ -155,7 +158,7 @@ IO.puts "driver: starting sally"
 IO.puts "mike: joins grid"
 Grid.join(mike, {10, 10}) |> IO.inspect
 
-IO.puts "mike: joins grid"
+IO.puts "sally: joins grid"
 Grid.join(sally, {11.5, 10}) |> IO.inspect
 
 IO.puts "grid: search near {10, 10}, radius=1.5"

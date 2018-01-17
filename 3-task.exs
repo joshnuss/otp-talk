@@ -1,7 +1,7 @@
 defmodule Tile do
   use Agent
 
-  def start_link(name, coordinates) do
+  def start_link(name) do
     Agent.start_link(fn -> %{} end, name: name)
   end
 
@@ -80,7 +80,7 @@ defmodule Grid do
 
       %{
         id: name,
-        start: {Tile, :start_link, [name, coordinates]}
+        start: {Tile, :start_link, [name]}
       }
     end
   end
@@ -97,6 +97,9 @@ end
 
 IO.puts "grid: starting"
 Grid.start_link |> IO.inspect
+
+:sys.trace(:"tile-10-10", true)
+:sys.trace(:"tile-11-10", true)
 
 IO.puts "mike: joins grid"
 Grid.join(:mike, {10, 10}) |> IO.inspect
