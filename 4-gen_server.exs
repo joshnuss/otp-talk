@@ -143,23 +143,29 @@ defmodule Driver do
   end
 end
 
+IO.puts "grid: starting"
 Grid.start_link |> IO.inspect
 
-Grid
-|> Supervisor.which_children
-|> Enum.each(fn {_name, pid, _type, _args} -> :sys.trace(pid, true) end)
-
+IO.puts "driver: starting mike"
 {:ok, mike} = Driver.start(:mike)
+
+IO.puts "driver: starting sally"
 {:ok, sally} = Driver.start(:sally)
 
+IO.puts "mike: joins grid"
 Grid.join(mike, {10, 10}) |> IO.inspect
+
+IO.puts "mike: joins grid"
 Grid.join(sally, {11.5, 10}) |> IO.inspect
 
+IO.puts "grid: search near {10, 10}, radius=1.5"
 Grid.nearby({10, 10}, 1.5) |> IO.inspect
 
-Grid.move(mike, {10.4, 10})
-Grid.leave(sally, {11.5, 10})
-
+IO.puts "tumbleweeds..."
 :timer.sleep(5000)
 
+IO.puts "mike: device lost power"
 Process.exit(mike, true)
+
+IO.puts "grid: search near {10, 10}, radius=1.5"
+Grid.nearby({10, 10}, 1.5) |> IO.inspect

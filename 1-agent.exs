@@ -18,11 +18,17 @@ defmodule Grid do
   end
 end
 
+IO.puts "grid: starting"
 Grid.start_link |> IO.inspect
 
+IO.puts "mike: joins grid"
 Grid.join(:mike, {10, 20}) |> IO.inspect
+
+IO.puts "sally: joins grid"
 Grid.join(:sally, {11, 20}) |> IO.inspect
 
-Grid.move(:mike, {10, 21})
+IO.puts "mike: is on the move"
+Grid.move(:mike, {10, 21}) |> IO.inspect
 
-Grid.leave(:mike)
+IO.puts "mike: is leaving"
+Grid.leave(:mike) |> IO.inspect

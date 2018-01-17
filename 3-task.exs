@@ -95,18 +95,20 @@ defmodule Grid do
   end
 end
 
+IO.puts "grid: starting"
 Grid.start_link |> IO.inspect
 
-Grid
-|> Supervisor.which_children
-|> Enum.each(fn {_name, pid, _type, _args} -> :sys.trace(pid, true) end)
-
+IO.puts "mike: joins grid"
 Grid.join(:mike, {10, 10}) |> IO.inspect
+
+IO.puts "sally: joins grid"
 Grid.join(:sally, {11.5, 10}) |> IO.inspect
 
+IO.puts "grid: search near {10, 10}, radius=1.5"
 Grid.nearby({10, 10}, 1.5) |> IO.inspect
 
-Grid.move(:mike, {10.4, 4})
-Grid.leave(:mike, {10, 4})
+IO.puts "mike: is leaving"
+Grid.leave(:mike, {10, 10}) |> IO.inspect
 
+IO.puts "grid: search near {10, 10}, radius=1.5"
 Grid.nearby({10, 10}, 1.5) |> IO.inspect
