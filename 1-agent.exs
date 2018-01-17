@@ -6,19 +6,15 @@ defmodule Grid do
   end
 
   def join(id, coordinates) do
-    update &Map.put_new(&1, id, coordinates)
+    Agent.update(@name, &Map.put_new(&1, id, coordinates))
   end
 
   def move(id, coordinates) do
-    update &Map.put(&1, id, coordinates)
+    Agent.update(@name, &Map.put(&1, id, coordinates))
   end
 
   def leave(id) do
-    update &Map.delete(&1, id)
-  end
-
-  defp update(fun) do
-    Agent.update(@name, fun)
+    Agent.update(@name, &Map.delete(&1, id))
   end
 end
 
