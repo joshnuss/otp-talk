@@ -70,8 +70,6 @@ Grid
 |> Supervisor.which_children
 |> Enum.each(fn {_name, pid, _type, _args} -> :sys.trace(pid, true) end)
 
-:sys.trace(Grid, true)
-
 Grid.join(:mike, {10, 10}) |> IO.inspect
 Grid.join(:sally, {9, 10}) |> IO.inspect
 
