@@ -20,8 +20,6 @@ end
 
 Grid.start_link |> IO.inspect
 
-:sys.trace(Grid, true)
-
 Grid.join(:mike, {10, 20}) |> IO.inspect
 Grid.join(:sally, {11, 20}) |> IO.inspect
 
